@@ -1,0 +1,43 @@
+:root {
+    --var-primary: #F26D6D;
+    --var-secondary: #162615;
+    --var-button: #6B732F;
+    --var-otro: #8C4318;
+    --var-otro2: #D9526B;
+
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--var-primary);
+}
+
+.loginContainer {
+    max-width: 400px;
+    background-color: var(--var-secondary);
+    border-radius: 1em;
+    padding: 1em;
+
+
+    label {
+        color: #FFFFFF;
+        margin-bottom: 0.5em;
+    }
+
+    button {
+        background-color: var(--var-button);
+        border: none;
+    }
+}
+
+.menuCard {
+    width: 16rem;
+    background-color: var(--var-secondary);
+    color: #FFFFFF;
+
+    a {
+        background-color: var(--var-button);
+        border: none;
+    }
+}
