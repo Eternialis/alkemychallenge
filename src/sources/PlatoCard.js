@@ -1,16 +1,34 @@
+import { Link, useLocation } from "react-router-dom"
+import swal from "sweetalert"
 
-const PlatoCard = () => {
+const PlatoCard = ({ id, title, image, summary }) => {
+
+    let location = useLocation();
+
+    const handleClick = () => {
+        // setMenus([
+        //     ...menus,
+        //     { id, title, image }
+        // ])
+        swal("Agregado", `${title} añadido correctamente`, "success")
+    }
+
     return (
-        <div className="col-md-4 col-sm-6 mb-4">
-            <div className="card menuCard mx-auto">
-                <img src="..." className="card-img-top" alt="..." />
+        <Link to={`/plato/${id}`} className="col-xxl-2 col-xl-3 col-md-4 col-sm-6 mb-4" >
+            <div className="card mx-auto menuCard">
+                <img src={image} className="card-img-top" alt={title} />
                 <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                    <h5 className="card-title menuCard__title">{title}</h5>
+                    <p className="card-text menuCard__text" dangerouslySetInnerHTML={{ __html: summary }}></p>
+
+                    <div className="btnContainer">
+                        {location.pathname === "/buscador" ?
+                            <button onClick={handleClick} id="agregarAlMenu" className="btn btn-primary">Agregar al menú</button> :
+                            <button id="eliminar" className="btn btn-primary">Eliminar</button>}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
