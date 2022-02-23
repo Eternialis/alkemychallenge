@@ -6,7 +6,7 @@ const RequireAuth = ({ children }) => {
     const userToken = localStorage.getItem("userToken")
 
     if (!userToken) {
-        swal("Acceso restringido", "Inicia sesión para acceder a nuestro menú", "error")
+        swal("Acceso restringido", "Inicia sesión para acceder a nuestro sitio", "warning")
         return <Navigate to="/login" />
     }
 

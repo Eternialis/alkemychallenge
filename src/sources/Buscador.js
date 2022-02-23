@@ -5,8 +5,8 @@ import PlatoCard from "./PlatoCard"
 import * as Yup from "yup"
 import swal from "sweetalert"
 
-const SPOONACULAR_KEY = "d86b7a0cb2364ab5bc83dd947f9cfecd"
-const SPOONACULAR_URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_KEY}`
+const SPOONACULAR_KEY = process.env.REACT_APP_SPOONACULAR_KEY
+const SPOONACULAR_URL_ALL = process.env.REACT_APP_SPOONACULAR_URL_ALL + SPOONACULAR_KEY
 
 const Buscador = () => {
 
@@ -16,7 +16,7 @@ const Buscador = () => {
 
     const getRecipes = ({ browser, vegano }) => {
 
-        axios.get(`${SPOONACULAR_URL}&query=${browser}&number=12&addRecipeInformation=true${vegano ? "&diet=vegan" : ""}`)
+        axios.get(`${SPOONACULAR_URL_ALL}&query=${browser}&number=12&addRecipeInformation=true${vegano ? "&diet=vegan" : ""}`)
             .then((result) => {
                 if (result.data.results.length > 0) {
                     console.log(result.data.results)

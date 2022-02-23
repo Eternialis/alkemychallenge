@@ -2,7 +2,8 @@ import axios from "axios"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 
-const SPOONACULAR_KEY = "d86b7a0cb2364ab5bc83dd947f9cfecd"
+const SPOONACULAR_KEY = process.env.REACT_APP_SPOONACULAR_KEY
+const SPOONACULAR_URL_ITEM = process.env.REACT_APP_SPOONACULAR_URL_ITEM + SPOONACULAR_KEY
 
 const PlatoDetalle = () => {
 
@@ -10,7 +11,7 @@ const PlatoDetalle = () => {
     const [plato, setPlato] = useState({})
     const [loading, setLoading] = useState(true)
 
-    axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${SPOONACULAR_KEY}`)
+    axios.get(`${SPOONACULAR_URL_ITEM}${id}/information${SPOONACULAR_KEY}`)
         .then((result) => {
             setPlato(result.data)
         })
