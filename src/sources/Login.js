@@ -27,13 +27,13 @@ const Login = () => {
         } else {
             setLoading(true)
             setError(false)
-            console.log(inputs)
             axios({
                 method: 'post',
                 url: LOGIN_URL,
                 data: inputs
             })
                 .then((response) => {
+                    localStorage.setItem("userToken", response.data.token)
                     setLoading(false)
                     navigate("/")
 

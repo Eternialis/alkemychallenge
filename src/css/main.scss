@@ -71,6 +71,8 @@ body {
 
     .menuCard__title {
         height: 2.5em;
+        text-decoration: none;
+        color: #FFFFFF;
     }
 
     .menuCard__text {
@@ -79,6 +81,8 @@ body {
         text-overflow: ellipsis;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 5;
+        text-decoration: none;
+        color: #FFFFFF;
     }
 
     .btnContainer {

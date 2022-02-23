@@ -5,6 +5,7 @@ import Login from './sources/Login';
 import MenuContext from './sources/MenuContext';
 import Navbar from './sources/Navbar';
 import PlatoDetalle from './sources/PlatoDetalle';
+import RequireAuth from './sources/RequireAuth';
 
 const App = () => {
 
@@ -13,10 +14,10 @@ const App = () => {
       <MenuContext>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
           <Route path="/login" element={<Login />} />
-          <Route path="/buscador" element={<Buscador />} />
-          <Route path="/plato/:id" element={<PlatoDetalle />} />
+          <Route path="/buscador" element={<RequireAuth><Buscador /></RequireAuth>} />
+          <Route path="/plato/:id" element={<RequireAuth><PlatoDetalle /></RequireAuth>} />
         </Routes>
       </MenuContext>
     </BrowserRouter>

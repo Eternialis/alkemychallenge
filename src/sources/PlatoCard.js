@@ -18,8 +18,8 @@ const PlatoCard = ({ id, title, image, summary }) => {
             <div className="card mx-auto menuCard">
                 <img src={image} className="card-img-top" alt={title} />
                 <div className="card-body">
-                    <h5 className="card-title menuCard__title">{title}</h5>
-                    <p className="card-text menuCard__text" dangerouslySetInnerHTML={{ __html: summary }}></p>
+                    <h5 className="card-title text-decoration-none menuCard__title">{title}</h5>
+                    <p className="card-text text-decoration-none menuCard__text" dangerouslySetInnerHTML={{ __html: summary }}></p>
 
                     <div className="btnContainer">
                         {location.pathname === "/buscador" ?

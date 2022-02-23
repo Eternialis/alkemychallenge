@@ -2,6 +2,7 @@ import { createContext, useEffect, useReducer } from "react"
 import swal from "sweetalert"
 
 const initialState = {
+
     platosMenu: [],
     precioTotal: 0,
     promedioTiempoPreparacion: 0,
