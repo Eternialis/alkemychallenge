@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom"
+import swal from "sweetalert"
 
-const Navbar = () => {
+const Navbar = ({ user, setUser }) => {
+
+    const handleClick = () => {
+        localStorage.removeItem("userToken")
+        setUser(false)
+        swal("Ha cerrado su sesión")
+    }
 
     return (
         <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -13,6 +20,7 @@ const Navbar = () => {
                     <ul className="navbar-nav">
                         <li className="nav-item"><Link className="nav-link" to={"/"}>Home</Link></li>
                         <li className="nav-item"><Link className="nav-link" to={"/buscador"}>Buscar platos</Link></li>
+                        {user ? <li className="nav-item" onClick={handleClick}><Link className="nav-link" to={"/login"}>Cerrar Sesión</Link></li> : null}
                     </ul>
                 </div>
             </div>

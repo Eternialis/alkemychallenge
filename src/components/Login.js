@@ -5,7 +5,7 @@ import swal from 'sweetalert'
 
 const LOGIN_URL = "http://challenge-react.alkemy.org/"
 
-const Login = () => {
+const Login = ({ setUser }) => {
 
     const navigate = useNavigate()
 
@@ -37,6 +37,7 @@ const Login = () => {
                 .then((response) => {
                     localStorage.setItem("userToken", response.data.token)
                     setLoading(false)
+                    setUser(true)
                     navigate("/")
 
                 })

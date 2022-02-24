@@ -40,13 +40,17 @@ const reducer = (state, action) => {
             }
         case "quitar":
             swal("Eliminado", `${title} eliminado correctamente`, "success")
-            return {
-                platosMenu: state.platosMenu.filter((i) => i.id !== plato.id),
-                precioTotal: state.precioTotal - pricePerServing,
-                promedioTiempoPreparacion: ((state.promedioTiempoPreparacion * state.cantPlatos) - readyInMinutes) / (state.cantPlatos - 1),
-                promedioHealthscore: ((state.promedioHealthscore * state.cantPlatos) - healthScore) / (state.cantPlatos - 1),
-                cantPlatos: state.cantPlatos - 1,
-                cantPlatosVeganos: vegan ? state.cantPlatosVeganos - 1 : state.cantPlatosVeganos
+            if (state.cantPlatos === 1) {
+                return initialState
+            } else {
+                return {
+                    platosMenu: state.platosMenu.filter((i) => i.id !== plato.id),
+                    precioTotal: state.precioTotal - pricePerServing,
+                    promedioTiempoPreparacion: ((state.promedioTiempoPreparacion * state.cantPlatos) - readyInMinutes) / (state.cantPlatos - 1),
+                    promedioHealthscore: ((state.promedioHealthscore * state.cantPlatos) - healthScore) / (state.cantPlatos - 1),
+                    cantPlatos: state.cantPlatos - 1,
+                    cantPlatosVeganos: vegan ? state.cantPlatosVeganos - 1 : state.cantPlatosVeganos
+                }
             }
         default:
             break

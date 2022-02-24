@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import MenuContext from './components/MenuContext';
@@ -12,10 +12,12 @@ const PlatoDetalle = React.lazy(() => import('./components/PlatoDetalle'));
 
 const App = () => {
 
+  const [user, setUser] = useState(false)
+
   return (
     <BrowserRouter>
       <MenuContext>
-        <Navbar />
+        <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/" element={
             <RequireAuth>
@@ -25,7 +27,7 @@ const App = () => {
             </RequireAuth>} />
           <Route path="/login" element={
             <React.Suspense fallback={<Loading />}>
-              <Login />
+              <Login setUser={setUser} />
             </React.Suspense>
           } />
           <Route path="/buscador" element={

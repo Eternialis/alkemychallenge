@@ -71,7 +71,7 @@ const Buscador = () => {
             {loading ? <Loading /> :
                 <div className="row mx-auto mt-5">
                     {notFound ? <h2>No se ha encontrado ningun resultado para esta búsqueda</h2> :
-                        <div className="row mx-auto mt-5">
+                        <div className="row mt-5 listContainer">
                             {Object.keys(recipes).length !== 0 &&
                                 recipes.map(recipeItem => <PlatoCard key={recipeItem.id} id={recipeItem.id} title={recipeItem.title} image={recipeItem.image} summary={recipeItem.summary} healthScore={recipeItem.healthScore} readyInMinutes={recipeItem.readyInMinutes} pricePerServing={recipeItem.pricePerServing} vegan={recipeItem.vegan} />)}
                         </div>}
