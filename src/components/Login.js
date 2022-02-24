@@ -24,6 +24,8 @@ const Login = () => {
         e.preventDefault()
         if (!inputs.email || !inputs.password) {
             setError(true)
+        } else if (localStorage.getItem("userToken")) {
+            swal("Conectado", "Ya iniciaste sesión", "alert")
         } else {
             setLoading(true)
             setError(false)

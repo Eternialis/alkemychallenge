@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react"
+import { createContext, useReducer } from "react"
 import swal from "sweetalert"
 
 const initialState = {
@@ -13,20 +13,22 @@ const initialState = {
 
 const reducer = (state, action) => {
     const { plato, estado } = action
-    const { healthScore, readyInMinutes, pricePerServing, vegan } = plato
+    const { title, healthScore, readyInMinutes, pricePerServing, vegan } = plato
 
     switch (estado) {
         case "agregar":
             const index = state.platosMenu.findIndex((platoGuardado) => platoGuardado.id === plato.id)
+            console.log(index)
             let error = state.cantPlatos === 4 ? "El menú ya cuenta con cuatro platos" :
                 index !== -1 ? "El plato ya fue agregado al menu" :
                     vegan && state.cantPlatosVeganos === 2 ? "Se ha alcanzado el máximo de platos veganos" :
                         !vegan && (state.cantPlatos - state.cantPlatosVeganos) === 2 ? "Se ha alcanzado el máximo de platos no veganos" : ""
-
-            if (error) {
-                swal("Máximo alcanzado", "Se ha alcanzado el máximo de platos no veganos", "error")
+            console.log(error)
+            if (error !== "") {
+                swal("Error", error, "error")
                 return state
             } else {
+                swal("Agregado", `${title} añadido correctamente`, "success")
                 return {
                     platosMenu: [...state.platosMenu, plato],
                     precioTotal: state.precioTotal + pricePerServing,
@@ -37,6 +39,7 @@ const reducer = (state, action) => {
                 }
             }
         case "quitar":
+            swal("Eliminado", `${title} eliminado correctamente`, "success")
             return {
                 platosMenu: state.platosMenu.filter((i) => i.id !== plato.id),
                 precioTotal: state.precioTotal - pricePerServing,

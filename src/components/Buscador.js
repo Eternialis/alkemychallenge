@@ -4,6 +4,7 @@ import { useState } from "react"
 import PlatoCard from "./PlatoCard"
 import * as Yup from "yup"
 import swal from "sweetalert"
+import Loading from "./Loading"
 
 const SPOONACULAR_KEY = process.env.REACT_APP_SPOONACULAR_KEY
 const SPOONACULAR_URL_ALL = process.env.REACT_APP_SPOONACULAR_URL_ALL + SPOONACULAR_KEY
@@ -67,19 +68,13 @@ const Buscador = () => {
                             undefined}
                     </>)}
             </Formik>
-            {loading ?
-                <div className="loadingContainer mt-5">
-                    <div className="spinner-grow  ms-2" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div><div className="spinner-grow ms-2" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div><div className="spinner-grow ms-2" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                </div> :
+            {loading ? <Loading /> :
                 <div className="row mx-auto mt-5">
                     {notFound ? <h2>No se ha encontrado ningun resultado para esta búsqueda</h2> :
-                        Object.keys(recipes).length !== 0 ? recipes.map(recipeItem => <PlatoCard key={recipeItem.id} id={recipeItem.id} title={recipeItem.title} image={recipeItem.image} summary={recipeItem.summary} />) : null}
+                        <div className="row mx-auto mt-5">
+                            {Object.keys(recipes).length !== 0 &&
+                                recipes.map(recipeItem => <PlatoCard key={recipeItem.id} id={recipeItem.id} title={recipeItem.title} image={recipeItem.image} summary={recipeItem.summary} healthScore={recipeItem.healthScore} readyInMinutes={recipeItem.readyInMinutes} pricePerServing={recipeItem.pricePerServing} vegan={recipeItem.vegan} />)}
+                        </div>}
                 </div>}
         </>
 
