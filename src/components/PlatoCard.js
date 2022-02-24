@@ -18,7 +18,7 @@ const PlatoCard = ({ id, title, image, summary, healthScore, readyInMinutes, pri
     }
 
     return (
-        <div className="col-xxl-2 col-xl-3 col-md-4 col-sm-6 mb-4" >
+        <div className="col-xl-3 col-md-4 col-sm-6 mb-4" >
             <div className="card mx-auto menuCard">
                 <img src={image} className="card-img-top" alt={title} />
                 <div className="card-body">

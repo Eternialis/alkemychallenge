@@ -56,6 +56,10 @@ body {
     }
 }
 
+.listContainer {
+    justify-content: space-between;
+}
+
 .menuCard {
     width: 16rem;
     background-color: var(--var-secondary);
