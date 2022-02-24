@@ -8,16 +8,16 @@ const Home = () => {
 
     return (
         <>
-            <div className="container">
-                <div className="row gx-2">
+            <div className="container-lg">
+                <div className="row gx-2 valuesContainer">
                     <div className="col">
-                        <div className="p-2 bg-light">Precio total: $ {precioTotal}</div>
+                        <div className="p-2 bg-light">Precio total:<br />$ {precioTotal}</div>
                     </div>
                     <div className="col">
-                        <div className="p-2 bg-light">Promedio de tiempo de preparación: {promedioTiempoPreparacion.toFixed(2)} min.</div>
+                        <div className="p-2 bg-light">Promedio de tiempo de preparación:<br />{promedioTiempoPreparacion.toFixed(2)} min.</div>
                     </div>
                     <div className="col">
-                        <div className="p-2 bg-light">Promedio Healtscore: {promedioHealthscore.toFixed(2)}</div>
+                        <div className="p-2 bg-light">Promedio Healtscore:<br />{promedioHealthscore.toFixed(2)}</div>
                     </div>
                 </div>
             </div>

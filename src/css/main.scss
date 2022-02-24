@@ -59,13 +59,15 @@ body {
 .menuCard {
     width: 16rem;
     background-color: var(--var-secondary);
-    color: #FFFFFF;
-    cursor: pointer;
-    text-decoration: none;
     color: var(--bs-gray-dark);
 
     .menuCard__title {
         height: 2.5em;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         text-decoration: none;
         color: #FFFFFF;
     }
@@ -130,6 +132,21 @@ body {
     max-width: 500px;
 }
 
+.detalleContainer {
+    justify-content: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    h3 {
+        line-height: 200%;
+    }
+}
+
+
+
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -137,5 +154,18 @@ body {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 992px) {
+    .detalleContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .valuesContainer {
+        flex-direction: column;
     }
 }
